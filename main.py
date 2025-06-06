@@ -4,9 +4,6 @@ import requests
 import json
 from api_handle import get_user_events
 
-# Loop for program functionality
-flag = True
-
 # Used to gather user input
 while True:
     user_input = input("Please enter your GitHub username: ")
