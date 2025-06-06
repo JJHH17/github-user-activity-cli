@@ -13,5 +13,7 @@ def get_user_events(username, page_count):
         events = response.json()
         for event in events:
             print(f"- Type: {event['type']} | Repository: {event['repo']['name']} | Date: {event['created_at']}")
-    else:
-        print("Something went wrong")
+
+    # Handles unrecognised credentials
+    elif response.status_code == 404:
+        print(f"Username {username} not found, please try again!")
