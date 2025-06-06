@@ -16,7 +16,19 @@ while True:
     if page_count == "Exit" or page_count == "exit":
         break
 
-    get_user_events(user_input, int(page_count))
+    # Handling page count errors
+    try:
+        # Pagination limit check
+        if int(page_count) > 33:
+            get_user_events(user_input, 33)
+            print("This service is limited to 33 responses.")
+
+        else:
+            get_user_events(user_input, int(page_count))
+
+    except ValueError as ve:
+        print("Please enter a value number.")
+
 
 # TODO: Add error handling for incorrect address, page numbers
 # TODO: Handle time and date formatting
