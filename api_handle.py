@@ -5,7 +5,6 @@ import json
 
 base_url = f"https://api.github.com/users"
 
-
 # Handles displaying date of event
 def date_convert(input):
     new_date = input["created_at"]
@@ -32,4 +31,4 @@ def get_user_events(username, page_count):
 
     # Handles unrecognised credentials
     elif response.status_code == 404:
-        print(f"Username {username} not found, please try again!")
+        print(f"Username {username} or resource not found, please try again!")
