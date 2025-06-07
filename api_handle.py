@@ -16,6 +16,9 @@ def date_convert(input):
 # Handles displaying time of event
 def time_convert(input):
     new_time = input["created_at"]
+    new_time = new_time[len(new_time) // 2:] # Slices response to get time
+    new_time = new_time[1:-1] # Cuts start and end of string for better formatting
+    return new_time
 
 
 def get_user_events(username, page_count):
@@ -25,7 +28,7 @@ def get_user_events(username, page_count):
     if response.status_code == 200:
         events = response.json()
         for event in events:
-            print(f"- Type: {event['type']} | Repository: {event['repo']['name']} | Date: {date_convert(event)}")
+            print(f"- Type: {event['type']} | Repository: {event['repo']['name']} | Date: {date_convert(event)} | Time: {time_convert(event)}")
 
     # Handles unrecognised credentials
     elif response.status_code == 404:
