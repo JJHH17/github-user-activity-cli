@@ -26,9 +26,22 @@ def get_user_events(username, page_count):
 
     if response.status_code == 200:
         events = response.json()
-        for event in events:
-            print(f"- Type: {event['type']} | Repository: {event['repo']['name']} | Date: {date_convert(event)} | Time: {time_convert(event)}")
+
+        # Handling null instances
+        if len(events) == 0:
+            print("\nNo activity found")
+
+        else:
+            for event in events:
+                print(f"- Type: {event['type']} | Repository: {event['repo']['name']} | Date: {date_convert(event)} | Time: {time_convert(event)}")
+
+    # Handles timeout
+    elif response.status_code == 408:
+        print("\nYour request timed out, please try again later.")
 
     # Handles unrecognised credentials
     elif response.status_code == 404:
-        print(f"Username {username} or resource not found, please try again!")
+        print(f"\nUsername {username} or resource not found, please try again!")
+
+    elif response.status_code == 503:
+        print("\nService temporarily unavailable - Please try again later.")

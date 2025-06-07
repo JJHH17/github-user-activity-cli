@@ -6,12 +6,12 @@ from api_handle import get_user_events
 
 # Used to gather user input
 while True:
-    user_input = input("Please enter your GitHub username: ")
+    user_input = input("\nPlease enter your GitHub username: ")
 
     if user_input.lower() == "exit":
         break
 
-    page_count = input("Please enter how many events you want to return: ")
+    page_count = input("\nPlease enter how many events you want to return: ")
 
     if page_count.lower() == "exit":
         break
@@ -21,16 +21,13 @@ while True:
         # Pagination limit check
         if int(page_count) > 33:
             get_user_events(user_input, 33)
-            print("This service is limited to 33 responses.")
+            print("\nThis service is limited to 33 responses.")
 
         else:
             get_user_events(user_input, int(page_count))
 
     except ValueError as ve:
-        print("Please enter a valid number.")
-
-    else:
-        print("Resource not found, please try again.")
+        print("\nPlease enter a valid number.")
 
 # TODO: Update readme
 # TODO: Push and then upload to roadmap.sh
