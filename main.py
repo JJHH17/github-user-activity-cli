@@ -6,12 +6,12 @@ from api_handle import get_user_events
 
 # Used to gather user input
 while True:
-    user_input = input("\nPlease enter your GitHub username: ")
+    user_input = input("\nPlease enter your GitHub username (or 'Exit' to leave): ")
 
     if user_input.lower() == "exit":
         break
 
-    page_count = input("\nPlease enter how many events you want to return: ")
+    page_count = input("\nPlease enter how many events you want to return (or 'Exit' to leave): ")
 
     if page_count.lower() == "exit":
         break
@@ -28,6 +28,3 @@ while True:
 
     except ValueError as ve:
         print("\nPlease enter a valid number.")
-
-# TODO: Update readme
-# TODO: Push and then upload to roadmap.sh
