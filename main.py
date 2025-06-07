@@ -8,12 +8,12 @@ from api_handle import get_user_events
 while True:
     user_input = input("Please enter your GitHub username: ")
 
-    if user_input == "Exit" or user_input == "exit":
+    if user_input.lower() == "exit":
         break
 
     page_count = input("Please enter how many events you want to return: ")
 
-    if page_count == "Exit" or page_count == "exit":
+    if page_count.lower() == "exit":
         break
 
     # Handling page count errors
@@ -29,6 +29,8 @@ while True:
     except ValueError as ve:
         print("Please enter a valid number.")
 
+    else:
+        print("Resource not found, please try again.")
 
-# TODO: Handle time and date formatting
-# TODO: Allow user to request specific event types
+# TODO: Update readme
+# TODO: Push and then upload to roadmap.sh
