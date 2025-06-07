@@ -27,9 +27,8 @@ while True:
             get_user_events(user_input, int(page_count))
 
     except ValueError as ve:
-        print("Please enter a value number.")
+        print("Please enter a valid number.")
 
 
-# TODO: Add error handling for incorrect address, page numbers
 # TODO: Handle time and date formatting
 # TODO: Allow user to request specific event types
